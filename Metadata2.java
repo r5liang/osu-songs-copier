@@ -8,7 +8,7 @@ import org.jaudiotagger.audio.mp3.MP3File;
 
 public class Metadata2 {
     public static void main(String[] args) {
-        System.out.println(args[0] + " - " + args[1]);
+        //System.out.println(args[0] + " - " + args[1]);
         try {
             MP3File metadata = (MP3File)AudioFileIO.read(new File(args[0]));
             Tag tag;
