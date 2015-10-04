@@ -6,8 +6,6 @@
 
 MP3 files can have different ID3 tag versions that store metadata differently. The majority of time was spent trying different Python ID3 libraries to edit these tags, but no library was able to handle multiple ID3 versions and they were too outdated/convoluted or failed outright. Eventually I outsourced the tag editing part to a Java helper class I wrote to use a Java library, of which there were far more options. Jaudiotagger (found here http://www.jthink.net/jaudiotagger/) was the most successful, and manages to set tags for most of the files, so thanks to them.
 
-![Example output](http://puu.sh/kxO3x/fd1392a69a.png)
-
 ###Instructions for usage (requires Python): 
 * Double-click osu-songs-copier.py to start. The entire process should take several minutes depending on the size of your Songs folder and speed of your hard disk. DO NOT RUN THIS IN THE COMMAND LINE (python osu-songs-copier.py) OR YOU WILL BE OVERWHELMED BY HUNDREDS OF CMD WINDOWS!! (because a Java program is called on to edit the tags)
 * The current Songs directory is hardcoded in the dir variable as C:/Program Files (x86)/osu!/Songs. I haven't added command line argument functionality to specify a Songs folder location yet (and the default should work for most people), but if you need you can change the dir variable in osu-songs-copier.py.
@@ -25,3 +23,4 @@ If you want to compile TagEditSlave.java (requires JDK): javac -cp jaudiotagger-
 * Prevent java cmd window spam when running from command line
 * Use source for album tag
 * Use judgement for duplicates by comparing song lengths
+* Probably make all or some of the above optional and with a config text file instead of command line

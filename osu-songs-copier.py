@@ -97,14 +97,14 @@ for i in filenames: # for each song folder
             print currartist + " - " + currtitle
             # outsourcing tag editing to java class
             subprocess.Popen(["java", "-cp", ".;jaudiotagger-2.2.4.jar",
-                              "TagEditSlave", os.path.join(newpath,
-                                                           currnewfilename),
+                              "TagEditSlave",
+                              os.path.join(newpath, currnewfilename),
                               currartist, currtitle])
                  
     else:
         songsnotfound = songsnotfound + 1
         
-print songscopied + "songs copied!"
+print songscopied + " songs copied!"
 ###print songsnotfound
 ###print osusnotfound
 ###print invalidosus
