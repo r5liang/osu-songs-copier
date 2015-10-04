@@ -7,8 +7,8 @@ import shutil
 #from tagger import *
 import subprocess
 
-dir = "C:/Program Files (x86)/osu!/Songs"
-newpath = "./stuff"
+dir = "C:/Program Files (x86)/osu!/Songs" # osu Songs folder
+newpath = "./stuff" # destination folder
 filenames = os.listdir(dir) # all the song folders
 invalidosus = 0
 print len(filenames)
@@ -98,6 +98,6 @@ for i in filenames: # for each song folder
     else:
         songsnotfound = songsnotfound + 1
         
-print songsnotfound
-print osusnotfound
-print invalidosus
+###print songsnotfound
+###print osusnotfound
+###print invalidosus
