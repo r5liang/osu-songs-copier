@@ -15,10 +15,10 @@ MP3 files can have different ID3 tag versions that store metadata differently. T
 * Duplicate songs will exist in case two songs have the same name but happen to be different cuts or remixes of each other. They can be dealt with relatively easily on a case-by-case basis (sort alphabetically and look for similar filenames).
 
 ###Known Issues:
-Can't set tags in some files with different ID3 versions
-Somehow fewer songs are copied than than beatmap folders in the Songs directory
+* Can't set tags in some files with different ID3 versions
+* Somehow fewer songs are copied than than beatmap folders in the Songs directory
 
 ###Later features:
-Support command line input for certain arguments
-Prevent java cmd window spam when running from command line
-Use source for album tag
+* Support command line input for certain arguments
+* Prevent java cmd window spam when running from command line
+* Use source for album tag
