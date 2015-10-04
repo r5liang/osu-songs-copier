@@ -16,7 +16,9 @@ MP3 files can have different ID3 tag versions that store metadata differently. T
 
 ###Known Issues:
 Can't set tags in some files with different ID3 versions
+Somehow fewer songs are copied than than beatmap folders in the Songs directory
 
 ###Later features:
 Support command line input for certain arguments
 Prevent java cmd window spam when running from command line
+Use source for album tag
