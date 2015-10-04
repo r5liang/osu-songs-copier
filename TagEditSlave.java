@@ -6,7 +6,7 @@ import org.jaudiotagger.tag.FieldKey;
 import org.jaudiotagger.tag.*;
 import org.jaudiotagger.audio.mp3.MP3File;
 
-public class TagEditSlave {
+public class Metadata2 {
     public static void main(String[] args) {
         //System.out.println(args[0] + " - " + args[1]);
         try {
