@@ -5,7 +5,8 @@ import shutil
 #import eyed3
 import subprocess
 
-dir = "C:/Program Files (x86)/osu!/Songs" # osu Songs folder
+#dir = "C:/Program Files (x86)/osu!/Songs" # osu Songs folder
+dir = "./Songs"
 newpath = "./stuff" # destination folder
 filenames = os.listdir(dir) # all the song folders
 
@@ -104,7 +105,7 @@ for i in filenames: # for each song folder
     else:
         songsnotfound = songsnotfound + 1
         
-print songscopied + " songs copied!"
+print str(songscopied) + " songs copied!"
 ###print songsnotfound
 ###print osusnotfound
 ###print invalidosus
