@@ -18,7 +18,6 @@ If you want to compile TagEditSlave.java (requires JDK): javac -cp jaudiotagger-
 ###Known Issues:
 * Can't set tags in some files with different ID3 versions
 * Somehow fewer songs are copied than than beatmap folders in the Songs directory
-* Crashes when encountering non folder in Songs directory, or folder with non ASCII characters in its name. If you have any of these, for now remove them.
 
 ###Later features:
 * Support command line input for certain arguments

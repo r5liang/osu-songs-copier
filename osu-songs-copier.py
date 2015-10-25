@@ -5,8 +5,8 @@ import shutil
 #import eyed3
 import subprocess
 
-#dir = "C:/Program Files (x86)/osu!/Songs" # osu Songs folder
-dir = "./Songs"
+dir = "C:/Program Files (x86)/osu!/Songs" # osu Songs folder
+#dir = "./Songs"
 newpath = "./stuff" # destination folder
 filenames = os.listdir(dir) # all the song folders
 
@@ -21,6 +21,8 @@ if not os.path.exists(newpath):
 
 for i in filenames: # for each song folder
     currdir = os.path.join(dir, i) # full path of the current song folder
+    if not os.path.isdir(currdir):
+        continue
     currfiles = os.listdir(currdir) # all files in the folder
     j = 0
     osufound = False
