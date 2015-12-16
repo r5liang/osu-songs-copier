@@ -31,7 +31,9 @@ elif antidupestr == "false":
 else:
     print "Config antidupe invalid"
     quit()
+    
 filenames = os.listdir(dir) # all the song folders
+tobecopied = "" # list of data to transfer to java
 
 # some counters just for checking stuff
 songsnotfound = 0
@@ -121,15 +123,25 @@ for i in filenames: # for each song folder
             metadata.tag.save()
             '''
             print currartist + " - " + currtitle
+            '''
             # outsourcing tag editing to java class
             subprocess.Popen(["java", "-cp", ".;jaudiotagger-2.2.4.jar",
                               "TagEditSlave",
                               os.path.join(newpath, currnewfilename),
                               currartist, currtitle])
-                 
+            '''
+            tobecopied = tobecopied + os.path.join(newpath, currnewfilename) + \
+                         "\n" + currartist + "\n" + currtitle + "\n"
     else:
         songsnotfound = songsnotfound + 1
-        
+
+f = open("osctemp.txt", "w")
+f.write(tobecopied[:len(tobecopied)-1])
+f.close()
+# outsourcing tag editing to java class
+subprocess.Popen(["java", "-cp", ".;jaudiotagger-2.2.4.jar", "TagEditSlave",
+                  "osctemp.txt"])
+
 print str(songscopied) + " songs copied!"
 ###print songsnotfound
 ###print osusnotfound
