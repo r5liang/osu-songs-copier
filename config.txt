@@ -1,0 +1,3 @@
+dir=C:/Program Files (x86)/osu!/Songs
+dest=./stuff
+antidupe=True

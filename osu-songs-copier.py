@@ -5,9 +5,32 @@ import shutil
 #import eyed3
 import subprocess
 
-dir = "C:/Program Files (x86)/osu!/Songs" # osu Songs folder
-#dir = "./Songs"
-newpath = "./stuff" # destination folder
+# reading input arguments from config.txt file
+f = open("config.txt", "rU")
+params = f.read()
+match = re.search(r"dir=(.*)", params)
+if not match:
+    print "Config dir variable missing"
+    quit()
+dir = match.group(1) # osu Songs folder
+match = re.search(r"dest=(.*)", params)
+if not match:
+    print "Config dest variable missing"
+    quit()
+newpath = match.group(1) # destination folder
+match = re.search(r"antidupe=(.*)", params)
+if not match:
+    print "Config antidupe variable missing"
+    quit()
+antidupestr = match.group(1).lower()
+antidupe = False
+if antidupestr == "true":
+    antidupe = True
+elif antidupestr == "false":
+    antidupe = False
+else:
+    print "Config antidupe invalid"
+    quit()
 filenames = os.listdir(dir) # all the song folders
 
 # some counters just for checking stuff

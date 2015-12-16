@@ -8,9 +8,9 @@ MP3 files can have different ID3 tag versions that store metadata differently. T
 
 ###Instructions for usage: 
 * **You must have Python 2.7 and Java Runtime Environment installed.** 
-* The current Songs directory is hardcoded in the dir variable as C:/Program Files (x86)/osu!/Songs. I haven't added command line argument functionality to specify a Songs folder location yet (and the default should work for most people), but if you need you can change the dir variable in osu-songs-copier.py.
+* Open config.txt and replace the path after "dir=" with your current Songs directory. The default (which should work for most people running Windows 7 or 8) is C:/Program Files (x86)/osu!/Songs
+* Replace the path after "dest=" with the location of your destination folder. All new files will be copied to here. The default is a folder called stuff inside the current directory.
 * Double-click osu-songs-copier.py to start. The entire process should take several minutes depending on the size of your Songs folder and speed of your hard disk. DO NOT RUN THIS IN THE COMMAND LINE (python osu-songs-copier.py) OR YOU WILL BE OVERWHELMED BY HUNDREDS OF CMD WINDOWS!! (because a Java program is called on to edit the tags)
-* All new files will be copied to a folder stuff in the current directory. Again, there are no command line arguments to specify a destination folder yet, but feel free to change the newpath variable in osu-songs-copier.py.
 * Duplicate songs will exist in case two songs have the same name but happen to be different cuts or remixes of each other. They can be dealt with relatively easily on a case-by-case basis (sort alphabetically and look for similar filenames).
 
 If you want to compile TagEditSlave.java (requires JDK): javac -cp jaudiotagger-2.2.4.jar TagEditSlave.java
@@ -18,9 +18,9 @@ If you want to compile TagEditSlave.java (requires JDK): javac -cp jaudiotagger-
 ###Known Issues:
 * Can't set tags in some files with different ID3 versions
 * Somehow fewer songs are copied than than beatmap folders in the Songs directory
+* First world problem: MY SSD CALLS THE JAVA TAG EDITOR SO QUICKLY THAT WINDOWS RUNS OUT OF MEMORY
 
 ###Later features:
-* Support command line input for certain arguments
 * Prevent java cmd window spam when running from command line
 * Use source for album tag
 * Use judgement for duplicates by comparing song lengths
