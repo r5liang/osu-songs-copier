@@ -52,6 +52,7 @@ for i in filenames: # for each song folder
     j = 0
     osufound = False
     songfound = False
+    osufilesfound = []
     currosu = ""
     currsong = ""
     currnewfilename = ""
@@ -59,10 +60,10 @@ for i in filenames: # for each song folder
 
     # for each file in the song folder
     while (j < len(currfiles) and (not osufound or not songfound)):
-        if not osufound: # search for .osu file
-            if re.search(r".+\.osu$", currfiles[j]):
-                currosu = currfiles[j]
-                osufound = True
+        # search for .osu file
+        if re.search(r".+\.osu$", currfiles[j]):
+            osufilesfound.append(currfiles[j])
+            osufound = True
 
         if re.search(r".+\.mp3$", currfiles[j]): # search for .mp3 file
             # this part will find the largest mp3 file in the folder,
@@ -75,18 +76,27 @@ for i in filenames: # for each song folder
         j = j + 1
 
     if songfound:
+        osuvalid = False
         if osufound: # searching for artist and title in .osu file
             currtitle = ""
             currartist = ""
-            f = open(os.path.join(currdir, currosu), "rU")
-            fullfile = f.read()
-            titlematch = re.search(r"Title:([\S ]+)", fullfile)
-            artistmatch = re.search(r"Artist:([\S ]+)", fullfile)   
-            if artistmatch:
-                currartist = artistmatch.group(1)
-            if titlematch:
-                currtitle = titlematch.group(1)
-            if (not titlematch or not artistmatch):
+            for currosu in osufilesfound:
+                try:
+                    f = open(os.path.join(currdir, currosu), "rU")
+                    fullfile = f.read()
+                    titlematch = re.search(r"Title:([\S ]+)", fullfile)
+                    artistmatch = re.search(r"Artist:([\S ]+)", fullfile)   
+                    if artistmatch:
+                        currartist = artistmatch.group(1)
+                    if titlematch:
+                        currtitle = titlematch.group(1)
+                except:
+                    print "file is fked"
+                if currtitle and currartist:
+                    osuvalid = True
+                    break
+                    
+            if not currtitle or not currartist:
                 invalidosus = invalidosus + 1
                 print "wtf"
 
@@ -115,7 +125,7 @@ for i in filenames: # for each song folder
         songscopied = songscopied + 1
 
         
-        if osufound: # writing to file's metadata if available
+        if osuvalid: # writing to file's metadata if available
             ''' Old (not working) eyed3 code
             metadata = eyed3.load(os.path.join(newpath, currnewfilename))          
             metadata.tag.artist = currartist.decode("utf-8")
